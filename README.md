@@ -8,7 +8,7 @@ http://localhost:8080/cities/all
 Конфигурационный файл для подключения базы данных есть в resources.
 
 Данные для бота:
-bot.username=CItyReference_bot
+bot.username=CItyReference_bot; 
 bot.token=1470746078:AAGVuUhGjF06GGOKJxPehOXqi-mEOR4bo6M
 
 В боте реализован ответ исключительно на названия городов.
