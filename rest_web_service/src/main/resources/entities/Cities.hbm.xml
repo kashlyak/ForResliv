@@ -1,0 +1,10 @@
+<hibernate-mapping>
+    <class name="by.kashlyak.restwebservice.rest_web_service.models.City">
+        <id name="id" column="ID">
+            <generator class="native"/>
+        </id>
+        <property name="name"/>
+        <property name="description"/>
+
+    </class>
+</hibernate-mapping>
