@@ -1,8 +1,6 @@
 package by.kashlyak.restwebservice.rest_web_service.telegrambot.service;
 
 
-
-
 import by.kashlyak.restwebservice.rest_web_service.telegrambot.bean.TravelBot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,8 +13,6 @@ public class MessageService {
 
     @Autowired
     TravelBot travelBot;
-
-
 
 
     public void sendMessage(Message message, String text) {
@@ -32,4 +28,5 @@ public class MessageService {
 
         }
 
-    }}
+    }
+}

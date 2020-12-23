@@ -9,9 +9,9 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     int id;
-    @Column(name="name")
+    @Column(name = "name")
     String name;
-    @Column(name="description")
+    @Column(name = "description")
     String description;
 
     public City(String name, String description) {

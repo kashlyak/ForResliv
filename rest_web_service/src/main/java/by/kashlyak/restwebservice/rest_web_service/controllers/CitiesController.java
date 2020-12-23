@@ -21,9 +21,6 @@ public class CitiesController {
     }
 
 
-
-
-
     @GetMapping("/all")
     public String index(Model model) {
         model.addAttribute("cities", citiesDAO.allCitiesFromDB());
