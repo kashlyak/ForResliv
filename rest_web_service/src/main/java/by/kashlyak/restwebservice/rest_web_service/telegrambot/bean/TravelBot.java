@@ -36,28 +36,19 @@ public class TravelBot extends TelegramLongPollingBot {
     @Autowired
     MessageService messageService;
 
-
     @Override
     public void onUpdateReceived(Update update) {
         if (update.hasMessage()) {
             Message message = update.getMessage();
             if (message.hasText()) {
                 String text = message.getText();
-
-
                 if (citiesDAO.findByName(text) != null) {
                     String description = citiesDAO.findByName(text).getDescription();
                     messageService.sendMessage(message, description);
-
                 } else {
                     messageService.sendMessage(message, "Я не знаю такого города. Попробуйте снова.");
-
                 }
             }
-
-
         }
-
     }
-
 }

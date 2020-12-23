@@ -14,19 +14,15 @@ public class MessageService {
     @Autowired
     TravelBot travelBot;
 
-
     public void sendMessage(Message message, String text) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(message.getChatId());
         sendMessage.setText(text);
 
-
         try {
             travelBot.execute(sendMessage);
         } catch (TelegramApiException e) {
             e.printStackTrace();
-
         }
-
     }
 }

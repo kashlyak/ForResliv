@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/cities")
 public class CitiesController {
 
-
     private final CitiesDAO citiesDAO;
 
     @Autowired
@@ -20,13 +19,11 @@ public class CitiesController {
         this.citiesDAO = citiesDAO;
     }
 
-
     @GetMapping("/all")
     public String index(Model model) {
         model.addAttribute("cities", citiesDAO.allCitiesFromDB());
         return "cities/all";
     }
-
 
     @GetMapping("/new")
     public String newCity(@ModelAttribute("city") City city) {
@@ -67,6 +64,4 @@ public class CitiesController {
         citiesDAO.delete(name);
         return "redirect:/cities/all";
     }
-
-
 }

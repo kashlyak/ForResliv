@@ -67,7 +67,6 @@ public class CitiesDAO {
                 Query query = session.createQuery("FROM City where name =:name").setParameter("name", name);
                 City singleCity = (City) query.getSingleResult();
 
-
                 session.getTransaction().commit();
                 session.close();
                 return singleCity;
@@ -82,15 +81,13 @@ public class CitiesDAO {
 
         try {
             SessionFactory sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
-            City cityForUpdate = findByName(name);
 
+            City cityForUpdate = findByName(name);
             try (Session session = sessionFactory.openSession()) {
 
                 int id = city.getId();
 
-
                 session.beginTransaction();
-
 
                 Query query = session.createQuery("update City  set name =:newName,description=:newDescription where name=:name");
                 query.setParameter("name", cityForUpdate.getName());
@@ -98,14 +95,10 @@ public class CitiesDAO {
                 query.setParameter("newDescription", city.getDescription());
                 query.executeUpdate();
 
-
                 session.getTransaction().commit();
-
-
             }
         } catch (Exception e) {
             e.printStackTrace();
-
         }
     }
 
@@ -121,15 +114,11 @@ public class CitiesDAO {
                 session.delete(cityForDelete);
                 session.getTransaction().commit();
 
-
             }
         } catch (Exception e) {
             e.printStackTrace();
-
         }
     }
-
-
 }
 
 

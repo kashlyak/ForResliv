@@ -20,7 +20,6 @@ public class SpringConfig implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
 
-
     @Autowired
     public SpringConfig(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
@@ -43,13 +42,10 @@ public class SpringConfig implements WebMvcConfigurer {
         return templateEngine;
     }
 
-
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
         resolver.setTemplateEngine(templateEngine());
         registry.viewResolver(resolver);
     }
-
-
 }

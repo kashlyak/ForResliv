@@ -5,12 +5,14 @@ import javax.persistence.*;
 @Entity
 @Table(name = "city")
 public class City {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     int id;
+
     @Column(name = "name")
     String name;
+
     @Column(name = "description")
     String description;
 
@@ -18,7 +20,6 @@ public class City {
         this.name = name;
         this.description = description;
     }
-
     public City() {
     }
 
