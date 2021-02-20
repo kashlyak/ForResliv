@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update description</title>
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/cities/{name}(name=${city.getName()})}" th:object="${city}">
+    <label for="name">Enter new name: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+
+    <label for="description">Enter new description: </label>
+    <input type="text" th:field="*{description}" id="description"/>
+    <br/>
+    <input type="submit" value="Update!"/>
+
+
+</form>
+
+</body>
+</html>
