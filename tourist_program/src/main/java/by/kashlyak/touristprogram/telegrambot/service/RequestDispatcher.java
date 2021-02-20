@@ -22,7 +22,7 @@ public class RequestDispatcher {
                 messageService.sendMessageWithKeyboard(update.getMessage(),
                         "Привет! Я бот, который расскажет тебе о местах в городах, которые стоит посетить! Напиши мне город, пожалуйста!");
             }else if (cityRepository.findCityByName(text) != null) {
-                String description = cityRepository.findCityByName(text).getDescription();
+                String description = cityRepository.findCityByName(text).get().getDescription();
                 if (description != null) {
                     messageService.sendMessage(update.getMessage(), description);
                 }

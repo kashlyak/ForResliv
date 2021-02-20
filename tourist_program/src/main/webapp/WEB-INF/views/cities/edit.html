@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Update description</title>
 </head>
 <body>
 
-<form th:method="PATCH" th:action="@{/cities/{name}(name=${city.getName()})}" th:object="${city}">
+<form th:action="@{/cities/{id}(id=${city.getId()})}" th:object="${city}" th:method="patch">
     <label for="name">Enter new name: </label>
     <input type="text" th:field="*{name}" id="name"/>
 

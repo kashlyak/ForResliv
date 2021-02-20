@@ -1,7 +1,7 @@
 package by.kashlyak.touristprogram.telegrambot.service;
 
 import by.kashlyak.touristprogram.telegrambot.bean.TravelBot;
-import by.kashlyak.touristprogram.telegrambot.buttons.ClientButtons;
+import by.kashlyak.touristprogram.telegrambot.buttons.ButtonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -13,7 +13,7 @@ public class MessageService {
     @Autowired
     TravelBot travelBot;
     @Autowired
-    ClientButtons clientButtons;
+    ButtonService buttonService;
 
     public void sendMessage(Message message, String text) {
         SendMessage sendMessage = new SendMessage();
@@ -30,7 +30,7 @@ public class MessageService {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(message.getChatId());
         sendMessage.setText(text);
-        sendMessage.setReplyMarkup(clientButtons.getMainMenuKeyboard());
+        sendMessage.setReplyMarkup(buttonService.getMainMenuKeyboard());
 
         try {
             travelBot.execute(sendMessage);

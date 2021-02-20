@@ -3,11 +3,15 @@ package by.kashlyak.touristprogram.rest_web_service.repository;
 
 import by.kashlyak.touristprogram.rest_web_service.entity.City;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Controller;
+import org.springframework.data.rest.webmvc.RepositoryRestController;
 
-@Controller
+import java.util.Optional;
+
+
+@RepositoryRestController
 public interface CityRepository extends JpaRepository<City, Long> {
-    City findCityByName(String name);
-    City deleteCityByName(String name);
+    Optional<City> findCityByName(String name);
+
+
 
 }

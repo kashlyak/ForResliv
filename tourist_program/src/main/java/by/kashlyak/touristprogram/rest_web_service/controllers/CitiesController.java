@@ -3,18 +3,22 @@ package by.kashlyak.touristprogram.rest_web_service.controllers;
 import by.kashlyak.touristprogram.rest_web_service.entity.City;
 import by.kashlyak.touristprogram.rest_web_service.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.Optional;
 
+@Controller
+@RequestMapping("/cities")
 public class CitiesController {
     @Autowired
     CityRepository cityRepository;
 
 
-    @GetMapping("/cities")
+    @GetMapping
     public String index(Model model) {
         model.addAttribute("cities", cityRepository.findAll());
         return "cities/all";
@@ -32,31 +36,35 @@ public class CitiesController {
 
         cityRepository.save(city);
 
-        return "redirect:/cities/all";
+        return "redirect:/cities";
     }
 
 
-    @GetMapping("/{name}")
-    public String show(@PathVariable("name") String name, Model model) {
-        model.addAttribute("city", cityRepository.findCityByName(name));
+    @GetMapping("/{id}")
+    public String show(@PathVariable("id") Long id, Model model) {
+
+        model.addAttribute("city", cityRepository.findById(id).get());
         return "cities/show";
     }
 
-    @GetMapping("/{name}/edit")
-    public String edit(Model model, @PathVariable("name") String name) {
-        model.addAttribute("city", cityRepository.findCityByName(name));
+    @GetMapping("/{id}/edit")
+    public String edit(Model model, @PathVariable("id") Long id) {
+        model.addAttribute("city", cityRepository.findById(id).get());
         return "cities/edit";
     }
 
-//    @RequestMapping("/{name}")
-//    public String update(@ModelAttribute("city") City city, @PathVariable("name") String name) {
-//        citiesDAO.update(name, city);
-//        return "redirect:/cities/all";
-//    }
+    @PatchMapping(value = "/{id}")
+    public String update(@ModelAttribute("city") City city, @PathVariable("id") Long id) {
+        cityRepository.save(city);
+        return "redirect:/cities";
+    }
 
-    @RequestMapping("/delete{name}")
-    public String delete(@PathVariable("name") String name) {
-        cityRepository.deleteCityByName(name);
-        return "redirect:/cities/all";
+    @DeleteMapping(value  ="/{id}")
+    public String delete(@PathVariable("id") Long id) {
+        City city = cityRepository.findById(id).get();
+        cityRepository.delete(city);
+        cityRepository.deleteById(id);
+        cityRepository.deleteAll();
+        return "redirect:/cities";
     }
 }

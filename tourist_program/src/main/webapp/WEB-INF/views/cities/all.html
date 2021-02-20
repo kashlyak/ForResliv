@@ -9,7 +9,7 @@
     Please select the city to view description
 </h2>
 <div th:each="city : ${cities}">
-    <a th:href="@{/cities/{id}(id=${city.getName()})}" th:text="${city.getName()}">user</a>
+    <a th:href="@{/cities/{id}(id=${city.getId()})}" th:text="${city.getName()}">user</a>
 
     <hr/>
 </div>
