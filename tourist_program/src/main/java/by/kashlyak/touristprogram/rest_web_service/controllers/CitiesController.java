@@ -14,7 +14,6 @@ public class CitiesController {
     CityRepository cityRepository;
 
 
-
     @GetMapping("/cities")
     public String index(Model model) {
         model.addAttribute("cities", cityRepository.findAll());
@@ -39,7 +38,7 @@ public class CitiesController {
 
     @GetMapping("/{name}")
     public String show(@PathVariable("name") String name, Model model) {
-        model.addAttribute("city",cityRepository.findCityByName(name));
+        model.addAttribute("city", cityRepository.findCityByName(name));
         return "cities/show";
     }
 
