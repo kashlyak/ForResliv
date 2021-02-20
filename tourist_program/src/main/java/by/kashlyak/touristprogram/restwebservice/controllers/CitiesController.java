@@ -1,15 +1,12 @@
-package by.kashlyak.touristprogram.rest_web_service.controllers;
+package by.kashlyak.touristprogram.restwebservice.controllers;
 
-import by.kashlyak.touristprogram.rest_web_service.entity.City;
-import by.kashlyak.touristprogram.rest_web_service.repository.CityRepository;
+import by.kashlyak.touristprogram.restwebservice.entity.City;
+import by.kashlyak.touristprogram.restwebservice.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/cities")
@@ -53,18 +50,17 @@ public class CitiesController {
         return "cities/edit";
     }
 
-    @PatchMapping(value = "/{id}")
+    @RequestMapping(value = "/patch/{id}")
     public String update(@ModelAttribute("city") City city, @PathVariable("id") Long id) {
         cityRepository.save(city);
         return "redirect:/cities";
     }
 
-    @DeleteMapping(value  ="/{id}")
+    @RequestMapping(value  ="/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
         City city = cityRepository.findById(id).get();
         cityRepository.delete(city);
-        cityRepository.deleteById(id);
-        cityRepository.deleteAll();
+
         return "redirect:/cities";
     }
 }

@@ -1,7 +1,7 @@
-package by.kashlyak.touristprogram.rest_web_service.repository;
+package by.kashlyak.touristprogram.restwebservice.repository;
 
 
-import by.kashlyak.touristprogram.rest_web_service.entity.City;
+import by.kashlyak.touristprogram.restwebservice.entity.City;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
 

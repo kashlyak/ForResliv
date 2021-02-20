@@ -1,4 +1,4 @@
-package by.kashlyak.touristprogram.rest_web_service.entity;
+package by.kashlyak.touristprogram.restwebservice.entity;
 
 import lombok.Data;
 

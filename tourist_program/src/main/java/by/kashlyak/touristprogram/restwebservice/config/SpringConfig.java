@@ -1,4 +1,4 @@
-package by.kashlyak.touristprogram.rest_web_service.config;
+package by.kashlyak.touristprogram.restwebservice.config;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

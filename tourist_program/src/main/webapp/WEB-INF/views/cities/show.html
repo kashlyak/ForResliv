@@ -10,7 +10,7 @@
 <p th:text="${city.getDescription()}">VALUE</p>
 
 <a th:href="@{/cities/{id}/edit(id=${city.getId()})}">Edit</a>
-<form th:action="@{/cities/{id}(id=${city.getId()})}" th:method="DELETE" >
+<form th:action="@{/cities/delete/{id}(id=${city.getId()})}" th:method="DELETE" >
     <input type="submit" value="Delete"/>
     <input type="button" onclick="history.back();" value="Back"/>
 </form>
