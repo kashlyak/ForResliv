@@ -1,7 +1,7 @@
 package by.kashlyak.touristprogram.telegrambot.service;
 
-import by.kashlyak.touristprogram.entity.City;
-import by.kashlyak.touristprogram.repository.CityRepository;
+import by.kashlyak.touristprogram.rest_web_service.entity.City;
+import by.kashlyak.touristprogram.rest_web_service.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.Update;
