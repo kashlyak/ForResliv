@@ -18,33 +18,32 @@ public class RequestDispatcher {
     public void dispatcher(Update update) {
         if (update.hasMessage()) {
             String text = update.getMessage().getText();
+
             if (text.toLowerCase().equals("/start")) {
                 messageService.sendMessageWithKeyboard(update.getMessage(),
                         "Привет! Я бот, который расскажет тебе о местах в городах, которые стоит посетить! Напиши мне город, пожалуйста!");
-            }else if (cityRepository.findCityByName(text) != null) {
-                String description = cityRepository.findCityByName(text).get().getDescription();
-                if (description != null) {
-                    messageService.sendMessage(update.getMessage(), description);
-                }
-            } else if(text.toLowerCase().equals("города, которые я знаю")) {
+            } else if (text.toLowerCase().equals("города, которые я знаю")) {
                 List<City> all = cityRepository.findAll();
-                if(all == null) {
+                if (all.size() == 0) {
                     messageService.sendMessage(update.getMessage(), "Я пока не знаю городов");
-                }else {
+                } else {
                     String message = "";
                     for (City city : all) {
                         message = message + city.getName() + "\n";
                     }
                     messageService.sendMessage(update.getMessage(), message);
                 }
-            }else {
-                    messageService.sendMessage(update.getMessage(), "Прости, я пока ничего не знаю про этот город. Напиши @kashlyak и он все поправит!");
+            } else if (cityRepository.findCityByName(text).isPresent()) {
+                cityRepository.findCityByName(text).get();
+                String description = cityRepository.findCityByName(text).get().getDescription();
+                if (description != null) {
+                    messageService.sendMessage(update.getMessage(), description);
                 }
-
-
+            } else {
+                messageService.sendMessage(update.getMessage(), "Прости, я пока ничего не знаю про этот город. Напиши @kashlyak и он все поправит!");
             }
-
         }
     }
+}
 
 
